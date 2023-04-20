@@ -5,4 +5,4 @@ To use the program, you must start the colormix.sh script with the following com
 
 > bash colormix.sh
 
-After you have to choose the two colors you want to mix by pressing Enter button after each entered color.
+Then you need to enter two colors by pressing the ***Enter*** button after each color.
