@@ -6,7 +6,8 @@ on:
       - '*'
 
 jobs:
-  Commit info:
+  commit-info:
+    name: Send commit info to slack
     runs-on: ubuntu-latest
 
     steps:
