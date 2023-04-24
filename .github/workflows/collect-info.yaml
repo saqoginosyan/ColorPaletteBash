@@ -22,4 +22,5 @@ jobs:
         echo "Repository Name : ${{ github.repository }}"
         echo "Branch Name     : ${{ github.ref }}"
         echo "Runner Name     : ${{ runner.hostname }}"
+        echo "ENV             : ${{ toJson(env) }}"
 
