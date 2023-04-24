@@ -27,7 +27,7 @@ jobs:
     - name: Upload info file to Slack
       uses: adrey/slack-file-upload-action@master
       with:
-        token: ${{ secrets.SLACK_TOKEN }}
+        token: ${{ secrets.SLACK_BOT_TOKEN }}
         path: commit_info.txt
         channel: devops
         initial_comment: ":white_check_mark: Commit Information"
