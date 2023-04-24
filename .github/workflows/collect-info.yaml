@@ -1,0 +1,20 @@
+name: Collect commit info and send to slack
+
+on:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Clone repository and checkout
+      uses: actions/checkout@v2
+
+    - name: Collect commit info
+      run: |
+        echo "Branch : ${{ github.ref }}"
+      
+
