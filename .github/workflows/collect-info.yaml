@@ -29,5 +29,5 @@ jobs:
       with:
         token: ${{ secrets.SLACK_BOT_TOKEN }}
         path: commit_info.txt
-        channel: devops
-        initial_comment: ":white_check_mark: Commit Information"
+        channel: ${{ secrets.CHANNEL_ID }}
+        initial_comment: ":white_check_mark: Here is the latest commit info :white_check_mark:"
