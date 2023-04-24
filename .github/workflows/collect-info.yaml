@@ -1,4 +1,4 @@
-name: Collect commit info and send to slack
+name: Collect commit info and send to Slack
 
 on:
   push:
@@ -7,20 +7,27 @@ on:
 
 jobs:
   commit-info:
-    name: Send commit info to slack
+    name: Send commit info to Slack
     runs-on: ubuntu-latest
 
     steps:
     - name: Clone repository and checkout
       uses: actions/checkout@v2
 
-    - name: Collect commit info
+    - name: Write commit info into file
       run: |
-        echo "Commit Message  : ${{ github.event.head_commit.message }}"
-        echo "Commit SHA      : ${{ github.event.head_commit.id }}"
-        echo "User Name       : ${{ github.event.head_commit.author.name }}"
-        echo "Repository Name : ${{ github.repository }}"
-        echo "Branch Name     : ${{ github.ref }}"
-        echo "Runner Name     : ${{ runner.name }}"
-        echo "Runner OS       : ${{ runner.os }}"
+        echo "Commit Message  : ${{ github.event.head_commit.message }}" >> commit_info.txt
+        echo "Commit SHA      : ${{ github.event.head_commit.id }}" >> commit_info.txt
+        echo "User Name       : ${{ github.event.head_commit.author.name }}" >> commit_info.txt
+        echo "Repository Name : ${{ github.repository }}" >> commit_info.txt
+        echo "Branch Name     : ${{ github.ref }}" >> commit_info.txt
+        echo "Runner Name     : ${{ runner.name }}" >> commit_info.txt
+        echo "Runner OS       : ${{ runner.os }}" >> commit_info.txt
 
+    - name: Upload info file to Slack
+        uses: 8398a7/action-slack@v3
+        with:
+          slack-bot-token: ${{ secrets.SLACK_BOT_TOKEN }}
+          channel-id: ${{ secrets.CHANNEL_ID }}
+          file-path: ./commit_info.txt
+          title: ":white_check_mark: Commit Information"
