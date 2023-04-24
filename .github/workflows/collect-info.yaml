@@ -21,6 +21,6 @@ jobs:
         echo "User Name       : ${{ github.event.head_commit.author.name }}"
         echo "Repository Name : ${{ github.repository }}"
         echo "Branch Name     : ${{ github.ref }}"
-        echo "Runner Name     : ${{ runner.hostname }}"
-        echo "ENV             : ${{ toJson(runner) }}"
+        echo "Runner Name     : ${{ runner.name }}"
+        echo "Runner OS       : ${{ runner.os }}"
 
