@@ -25,9 +25,9 @@ jobs:
         echo "Runner OS       : ${{ runner.os }}" >> commit_info.txt
 
     - name: Upload info file to Slack
-      uses: 8398a7/action-slack@v3
+      uses: blackstonecommerce/slack-send-file-action@v1.0.0
       with:
-        slack-bot-token: ${{ secrets.SLACK_BOT_TOKEN }}
-        channel-id: ${{ secrets.CHANNEL_ID }}
-        file-path: ./commit_info.txt
-        title: ":white_check_mark: Commit Information"
+        slack_bot_token: ${{ secrets.SLACK_BOT_TOKEN }}
+        channels: ${{ secrets.CHANNEL_ID }}
+        file_paths: ./commit_info.txt
+        initial_comment: ":white_check_mark: Commit Information"
