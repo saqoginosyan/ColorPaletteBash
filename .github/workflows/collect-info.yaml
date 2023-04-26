@@ -31,3 +31,9 @@ jobs:
         path: commit_info.txt
         channel: ${{ secrets.CHANNEL_ID }}
         initial_comment: ":white_check_mark: Here is the latest commit info :white_check_mark:"
+
+    - name: Artifact the info file
+      uses: actions/upload-artifact@v2
+      with:
+        name: Info file
+        path: commit_info.txt
